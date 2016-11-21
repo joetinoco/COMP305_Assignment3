@@ -2,7 +2,20 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/*
+
+LUNAR MODULE CONTROLLER
+=======================
+
+Manage the final game scene
+
+*/
+
 public class LunarModuleController : MonoBehaviour {
+
+	// ==========================================
+	// Attributes
+	// ==========================================	
 
 	public PlayerController player;
 	public Text gameOverText;
@@ -11,12 +24,16 @@ public class LunarModuleController : MonoBehaviour {
 	private Transform module;
 	public ParticleSystem booster;
 
-	// Use this for initialization
+	// ==========================================
+	// Object initialization
+	// ==========================================
 	void Start () {
 		module = GetComponent<Transform>();
 	}
 	
-	// Update is called once per frame
+	// ==========================================
+	// Game Lifecycle Updates
+	// ==========================================
 	void Update () {
 		if (liftOff) {
 			module.transform.position = new Vector3(
@@ -28,6 +45,8 @@ public class LunarModuleController : MonoBehaviour {
 		
 	}
 
+	// Collision detection methods
+	// =================================================
 	void OnCollisionEnter(Collision other) {
 		if (other.gameObject.CompareTag("Player")) {
 			if(player.pickupsFound < 5) {

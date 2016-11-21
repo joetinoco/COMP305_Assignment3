@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+
+SPARKS BEHAVIOUR
+================
+
+Control the effect when the laser hits a surface other than an enemy
+
+*/
+
 public class SparksBehaviour : MonoBehaviour {
 
+	// ==========================================
+	// Attributes
+	// ==========================================
 	public float EmitterDuration;
 	public ParticleSystem ParticleSystem;
 
-	// Use this for initialization
+	// ==========================================
+	// Object initialization
+	// ==========================================
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
+	// ==========================================
+	// Game Lifecycle Updates
+	// ==========================================
 	void Update () {
 
 		EmitterDuration -= Time.deltaTime;

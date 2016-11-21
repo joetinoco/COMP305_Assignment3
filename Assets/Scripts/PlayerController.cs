@@ -2,16 +2,27 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/*
+
+PLAYER CONTROLLER
+=================
+
+Control player object movement, animations, physics and collisions.
+
+*/
+
 public class PlayerController : MonoBehaviour {
 
+
+	// ==========================================
+	// Attributes
+	// ==========================================
 	public Text scoreText;
 	public Text healthText;
 	public Text pickupsText;
 	public Text gameOverText;
 	public Image miniMap;
 
-	// These sounds are handled here because the gameObject that produces them
-	// is destroyed when they're supposed to play.
 	[Header("SoundClips")]
 	public AudioSource audioSource;
 	public AudioClip enemyDeadSound;
@@ -25,28 +36,26 @@ public class PlayerController : MonoBehaviour {
 	private int playerScore = 0;
 	private Rigidbody rigidBody;
 
+	// ==========================================
+	// Object initialization
+	// ==========================================
 	void Start() {
 
 		gameOverText.gameObject.SetActive(false);
 		rigidBody = GetComponent<Rigidbody>();
 
 	}
-
-	public void PickupFound() {
-		pickupsFound++;
-		audioSource.PlayOneShot(this.pickupSound);
-	}
-
-	public void HowManyPickups(out int pickups) {
-		pickups = pickupsFound;
-	}
-
+	
+	// ==========================================
+	// Game Lifecycle Updates
+	// ==========================================
 	void Update() {
 		updateUI();
 	}
 
 	// Auxiliary methods
 	// ==========================================
+	
 
 	// UI updates for score changes
 	private void updateUI(){
@@ -58,6 +67,15 @@ public class PlayerController : MonoBehaviour {
 	// Public methods
 	// ==========================================
 
+	public void PickupFound() {
+		pickupsFound++;
+		audioSource.PlayOneShot(this.pickupSound);
+	}
+
+	public void HowManyPickups(out int pickups) {
+		pickups = pickupsFound;
+	}
+	
 	// Allow player to update the score
 	public void updateScore(int delta) {
 		playerScore += delta;

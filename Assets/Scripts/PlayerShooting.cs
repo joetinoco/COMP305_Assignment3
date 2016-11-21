@@ -1,8 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+
+PLAYER SHOOTING
+===============
+
+Control player shooting mechanics.
+
+*/
+
 public class PlayerShooting : MonoBehaviour {
 
+	// ==========================================
+	// Attributes
+	// ==========================================
 	public AudioSource audioSource;
 	public AudioClip LaserSound;
 	public GameObject MuzzleFlash;
@@ -11,12 +23,16 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject ExplosionEffect;
 	public Transform PlayerCamera;
 
-	// Use this for initialization
+	// ==========================================
+	// Object initialization
+	// ==========================================
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
+	// ==========================================
+	// Game Lifecycle Updates
+	// ==========================================
 	void FixedUpdate () {
 		if (Input.GetButtonDown("Fire1")) {
 			

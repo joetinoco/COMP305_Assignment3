@@ -1,7 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+
+ENEMY CONTROLLER
+================
+
+Manage enemy movement and death.
+
+*/
+
 public class EnemyController : MonoBehaviour {
+
+	// ==========================================
+	// Attributes
+	// ==========================================
 
 	public NavMeshAgent Agent;
 	// The distance which the enemy starts to chase the player
@@ -11,17 +24,22 @@ public class EnemyController : MonoBehaviour {
 	private Transform Enemy;
 	private Rigidbody rigidBody;
 
-	// Use this for initialization
+	// ==========================================
+	// Object initialization
+	// ==========================================
 	void Start () {
 		this.Player = GameObject.FindWithTag("Player").transform;
 		this.Enemy = this.transform;
 		this.rigidBody = GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
+	// ==========================================
+	// Game Lifecycle Updates
+	// ==========================================
 	void Update () {
 		if (Player.position == null) return;
 		 
+		// Stop/start enemy movement according to player position 
 		if (Vector3.Distance(Player.position, Enemy.position) <= TriggeringDistance) {
 			this.Agent.SetDestination(this.Player.position);
 			this.Agent.Resume();
@@ -31,6 +49,8 @@ public class EnemyController : MonoBehaviour {
 	
 	}
 
+	// Collision detection methods
+	// =================================================
 	void OnCollisionEnter(Collision other) {
 		if (other.gameObject.CompareTag("Player")) {
 			other.gameObject.SendMessage("enemyHit");
