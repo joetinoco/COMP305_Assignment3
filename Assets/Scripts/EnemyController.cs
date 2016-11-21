@@ -22,7 +22,6 @@ public class EnemyController : MonoBehaviour {
 	
 	private Transform Player;
 	private Transform Enemy;
-	private Rigidbody rigidBody;
 
 	// ==========================================
 	// Object initialization
@@ -30,7 +29,6 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
 		this.Player = GameObject.FindWithTag("Player").transform;
 		this.Enemy = this.transform;
-		this.rigidBody = GetComponent<Rigidbody>();
 	}
 	
 	// ==========================================

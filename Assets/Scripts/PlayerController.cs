@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour {
 	public int pickupsFound = 0;
 	private int playerHealth = 100;
 	private int playerScore = 0;
-	private Rigidbody rigidBody;
 
 	// ==========================================
 	// Object initialization
@@ -42,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 	void Start() {
 
 		gameOverText.gameObject.SetActive(false);
-		rigidBody = GetComponent<Rigidbody>();
 
 	}
 	
